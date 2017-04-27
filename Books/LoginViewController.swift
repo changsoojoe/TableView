@@ -8,9 +8,28 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+protocol LoginProtocol {
+    func completedLogin(name:String)
+    
+}
 
-    var delegate:MainTableViewController? = nil
+class LoginViewController: UIViewController, UITextFieldDelegate {
+
+    @IBOutlet var nameTextField: UITextField!
+    
+    var delegate:LoginProtocol? = nil
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
+    
+    @IBAction func confirm(_ sender: Any) {
+        if let names:String = nameTextField.text{
+            delegate?.completedLogin(name: names)
+        }
+        self.dismiss(animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

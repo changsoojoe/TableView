@@ -8,16 +8,32 @@
 
 import UIKit
 
-class MainTableViewController: UITableViewController {
+class MainTableViewController: UITableViewController, LoginProtocol {
 
     @IBAction func openLoginScene(_ sender: Any) {
         
+        /*
         if let loginVC = storyboard?.instantiateViewController(withIdentifier: "loginview") as? LoginViewController{
             loginVC.delegate = self
+            //present ==> modal
             self.present(loginVC, animated: true, completion: nil)
         }
+        */
+        
+        guard let loginVC = storyboard?.instantiateViewController(withIdentifier: "loginview") as? LoginViewController else{
+            return
+        }
+        loginVC.delegate = self
+        //present ==> modal
+        self.present(loginVC, animated: true, completion: nil)
         
     }
+    
+    
+    @IBAction func addButtonClick(_ sender: Any) {
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,6 +45,9 @@ class MainTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func completedLogin(name: String) {
+        print(name)
+    }
 
     /*
     // MARK: - Navigation

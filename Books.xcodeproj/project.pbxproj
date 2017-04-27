@@ -14,6 +14,7 @@
 		A5DD056A1EB18B0200D7FFA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5DD05681EB18B0200D7FFA8 /* LaunchScreen.storyboard */; };
 		A5DD05761EB1AEDB00D7FFA8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DD05751EB1AEDB00D7FFA8 /* LoginViewController.swift */; };
 		A5DD05781EB1AEFC00D7FFA8 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DD05771EB1AEFC00D7FFA8 /* MainTableViewController.swift */; };
+		A5DD057A1EB1BCC100D7FFA8 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DD05791EB1BCC100D7FFA8 /* PhotoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		A5DD056B1EB18B0200D7FFA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5DD05751EB1AEDB00D7FFA8 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A5DD05771EB1AEFC00D7FFA8 /* MainTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
+		A5DD05791EB1BCC100D7FFA8 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				A5DD056B1EB18B0200D7FFA8 /* Info.plist */,
 				A5DD05751EB1AEDB00D7FFA8 /* LoginViewController.swift */,
 				A5DD05771EB1AEFC00D7FFA8 /* MainTableViewController.swift */,
+				A5DD05791EB1BCC100D7FFA8 /* PhotoViewController.swift */,
 			);
 			path = Books;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 				A5DD05761EB1AEDB00D7FFA8 /* LoginViewController.swift in Sources */,
 				A5DD05621EB18B0200D7FFA8 /* ViewController.swift in Sources */,
 				A5DD05601EB18B0200D7FFA8 /* AppDelegate.swift in Sources */,
+				A5DD057A1EB1BCC100D7FFA8 /* PhotoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
