@@ -8,11 +8,18 @@
 
 import UIKit
 
-class PhotoViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class PhotoViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     @IBOutlet var imageView: UIImageView!
+    @IBOutlet var titleTextField: UITextField!
+    @IBOutlet var authorTextField: UITextField!
+    @IBOutlet var urlTextField: UITextField!
     
     @IBAction func closeClick(_ sender: Any) {
+        if let title = titleTextField.text{
+             let book:Book = Book(title: title, author: authorTextField.text, coverImage: imageView.image, URL: urlTextField.text)
+        }
+  
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -54,6 +61,20 @@ class PhotoViewController: UIViewController, UIImagePickerControllerDelegate, UI
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
+    
     
 
     /*
