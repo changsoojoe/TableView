@@ -13,6 +13,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var books:[Book] = [Book]()
+    let fileName = "books"
+    
+    func saveBooks(){
+        let fileName = "books"
+        let bData: Data = NSKeyedArchiver.archivedData(withRootObject: books)
+        
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first{
+            let path = dir.appendingPathComponent(fileName)
+        
+            do{
+                try bData.write(to: path)
+            }catch{}
+        }
+    }
+    
+    func loadBooks(){
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first{
+            let path = dir.appendingPathComponent(fileName)
+            
+            do {
+                let bData = try Data(contentsOf: path)
+                books = NSKeyedUnarchiver.unarchiveObject(with: bData) as! Array<Book>
+            }catch{}
+            
+        }
+    }
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
