@@ -10,10 +10,12 @@ import UIKit
 
 class MainTableViewController: UITableViewController, LoginProtocol {
 
-    var myArr:[[String:String]] = [[String:String]]()
+//    var myArr:[[String:String]] = [[String:String]]()
     var loginName:String? = nil
+    var appdelegate:AppDelegate? = UIApplication.shared.delegate as? AppDelegate
     
     override func viewDidAppear(_ animated: Bool) {
+        print("viewDidAppear")
     }
     
     @IBAction func openLoginScene(_ sender: Any) {
@@ -47,7 +49,7 @@ class MainTableViewController: UITableViewController, LoginProtocol {
         myArr.append("JOE")
         myArr.append("KIM")
         myArr.append("PARK")
-        */
+ 
         // Do any additional setup after loading the view.
         
         let dict1:[String:String] = ["name": "HONG", "phone":"010-4040-9292"]
@@ -59,6 +61,7 @@ class MainTableViewController: UITableViewController, LoginProtocol {
         myArr.append(dict2)
         myArr.append(dict3)
         myArr.append(dict4)
+        */
     }
 
     override func didReceiveMemoryWarning() {
@@ -76,18 +79,27 @@ class MainTableViewController: UITableViewController, LoginProtocol {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section:Int) -> Int {
-        return myArr.count
+        //return myArr.count
+        if let books = appdelegate?.books{
+            return books.count
+        }else{
+            return 0
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print("tableView \(indexPath)")
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-        cell.textLabel?.text = "Hello world. \(indexPath)"
-        cell.detailTextLabel?.text = "I want to go home"
-        let dic = myArr[indexPath.row]
+
+        guard let books = appdelegate?.books else{
+            print("guard return cell")
+            return cell
+        }
         
-        cell.textLabel?.text = dic["name"]
-        cell.detailTextLabel?.text = dic["phone"]
+        cell.textLabel?.text = books[indexPath.row].title
+        cell.detailTextLabel?.text = books[indexPath.row].author
+        cell.imageView?.image = books[indexPath.row].coverImage
+        
         return cell
     }
 
@@ -100,6 +112,10 @@ class MainTableViewController: UITableViewController, LoginProtocol {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+    }
     
     func openAlert(name:String){
         let alert = UIAlertController(title: "Welcom", message: "Welcom \(name)", preferredStyle: UIAlertControllerStyle.alert)
